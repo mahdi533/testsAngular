@@ -1,0 +1,32 @@
+    <div class="row mt-5">
+    <div class="offset-md-5  col-md-5 ">
+        <a routerLink="/posts/add" class="btn btn-success" style="width: 200px;">++Ajouter_Poste++</a>
+    </div>
+    <div class="offset-2 col-8 mt-2">
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Categorie</th>
+                    <th>Date Post</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of posts ;let i= index">
+                    <td><span>{{ i }}</span> </td>
+                    <td>{{user.title}} </td>
+                    <td>{{user.description}} </td>
+                    <td>{{user.cat}} </td>
+                    <td>{{user.date_post | date:'yyyy-MM-dd'}} </td>
+                    <td class="text-center">
+                        <button class="btn btn-info mr-3" (click)="deletPost(i)">DELETE</button>
+                        <a class="btn btn-danger" [routerLink]="['/posts/update/',i]">UPDATE</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

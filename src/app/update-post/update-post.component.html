@@ -1,0 +1,44 @@
+<div class="row mt-5 ">
+    <div class="offset-md-3 col-6 col-md-5 bg-secondary">
+        <form class="mt-5 mb-5" [formGroup]="user" (ngSubmit)="submitpost()">
+            <div class="form-group">
+                <input class="form-control" formControlName="title" name="titre" type="text" placeholder="Titre">
+                <div *ngIf="submited && user.controls.title.hasError('required')">
+                    <div class="text-danger">le titre de publication</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" formControlName="description" type="text" placeholder="Description"
+                    rows="3"></textarea>
+                <div class="text-danger">
+                    <div *ngIf="submited && user.controls.description.hasError('required')">la description 
+                        </div>
+                    <div *ngIf="submited && user.controls.description.hasError('minLength')">staper une
+                        description au moins 8 lettres</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select id="cat" class="form-control" formControlName="cat">
+                    <option selected disabled>Categorie</option>
+                    <option>Sport</option>
+                    <option>Technologies</option>
+                    <option>Economie</option>
+                    <option>Société</option>
+                </select>
+                <div *ngIf="submited && user.controls.cat.hasError('required')">
+                    <div class="text-danger">le titre de publication</div>
+                </div>
+            </div>
+            
+                <p>{{currentDate | date:'yyyy-MM-dd'}}</p>
+          
+            <div>
+                <button type="submit" class="btn btn-success btn-block">UPDAT</button>
+            </div>
+            <div>
+                <a class="btn btn-danger btn-block  mt-2" routerLink="/posts">RETOUR</a>
+            </div>
+        </form>
+    </div>
+
+</div>
